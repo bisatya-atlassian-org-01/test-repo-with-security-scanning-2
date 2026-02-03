@@ -1,0 +1,19 @@
+{
+  "name": "dependabot-test-repo",
+  "version": "1.0.0",
+  "description": "A test repository to demonstrate GitHub Dependabot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["dependabot", "test"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "jest": "^27.0.0"
+  }
+}
