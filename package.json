@@ -10,10 +10,13 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
-    "lodash": "^4.17.20"
+    "express": "4.17.1",
+    "lodash": "4.17.19",
+    "axios": "0.21.0",
+    "minimist": "1.2.5",
+    "json-schema": "0.2.3"
   },
   "devDependencies": {
-    "jest": "^27.0.0"
+    "jest": "27.0.0"
   }
 }
