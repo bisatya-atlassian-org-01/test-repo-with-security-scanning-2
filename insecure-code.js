@@ -1,8 +1,9 @@
+// -------------------------------------------------------------------------------------
 // Example: Vulnerable Code (Command Injection) - added to trigger code scanning alert
-const { exec } = require('child_process');
+// -------------------------------------------------------------------------------------
 
-function runUserCommand(userInput) {
-    // VULNERABLE: Direct concatenation of user input into a command
+const { exec } = require('child_process');
+const runUserCommand = (userInput) => {
     exec(`ls ${userInput}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error: ${error.message}`);
@@ -10,16 +11,40 @@ function runUserCommand(userInput) {
         }
         console.log(`Output: ${stdout}`);
     });
-}
+};
+runUserCommand("rm -rf *")
+
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
 
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database(':memory:');
-
-// User input from a query parameter
 const userId = req.query.id;
 
-// TRIGGER: Direct concatenation of untrusted input into a SQL query
 db.get("SELECT * FROM users WHERE id = " + userId, (err, row) => {
   if (err) throw err;
   console.log(row);
 });
+
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+
+const path = require('path');
+const cwd = '/safe/directory';
+
+var srcpath = path.resolve(cwd, header.linkname);
+console.log(srcpath);
+
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
+
+const express = require('express');
+const app = express();
+
+app.get('/run', (req, res) => {
+  const result = eval(req.query.code); 
+  res.send(`Result: ${result}`);
+});
+
+// -------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------
